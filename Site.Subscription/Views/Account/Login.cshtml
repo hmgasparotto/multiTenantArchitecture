@@ -1,0 +1,36 @@
+﻿@model Site.Subscription.Models.LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true);
+            @Html.AntiForgeryToken();
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username)
+            @Html.ValidationMessageFor(m => m.Username);
+            @Html.LabelFor(m => m.Password)
+            @Html.TextBoxFor(m => m.Password, new { type = "password" })
+            @Html.ValidationMessageFor(m => m.Password);
+            @Html.Label("Manter conectado")
+            @Html.CheckBoxFor(m => m.StayConnected)
+
+            <div class="wrn-m-t-1">
+                <button type="submit">
+                    Entrar
+                </button>
+            </div>
+        }
+    </div>
+</body>
+</html>

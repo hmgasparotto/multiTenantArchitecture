@@ -1,0 +1,32 @@
+﻿@model Domain.Models.Tenants.Tenant
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create User</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("CreateUser", "Account", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true);
+            @Html.AntiForgeryToken();
+            @Html.LabelFor(u => u.Email);
+            @Html.TextBoxFor(u => u.Email);
+            @Html.ValidationMessageFor(u => u.Email);
+            @Html.LabelFor(u => u.UserName);
+            @Html.TextBoxFor(u => u.UserName);
+            @Html.ValidationMessageFor(u => u.UserName);
+            @Html.LabelFor(u => u.PasswordHash);
+            @Html.PasswordFor(u => u.PasswordHash);
+            @Html.ValidationMessageFor(u => u.PasswordHash);
+            <input type="submit" value="Subscribe!" />
+        }
+    </div>
+</body>
+</html>
