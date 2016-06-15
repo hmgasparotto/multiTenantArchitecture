@@ -87,6 +87,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tenants\Tenant.cs" />
+    <Compile Include="Things\ContainerLevelMeasurer.cs" />
+    <Compile Include="Things\PublicIlluminationController.cs" />
+    <Compile Include="Things\Thing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

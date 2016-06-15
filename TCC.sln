@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Models", "Domain.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Subscription", "Site.Subscription\Site.Subscription.csproj", "{9C08A53F-F233-41BE-A543-D503DDDC3536}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Infrastructure", "Common.Infrastructure\Common.Infrastructure.csproj", "{04CE86BE-1E45-434A-A404-C27DD67F9F49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.IoT", "Data.IoT\Data.IoT.csproj", "{4C822ED1-796E-49BD-AB0E-71327AEA2579}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{9C08A53F-F233-41BE-A543-D503DDDC3536}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C08A53F-F233-41BE-A543-D503DDDC3536}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C08A53F-F233-41BE-A543-D503DDDC3536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04CE86BE-1E45-434A-A404-C27DD67F9F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04CE86BE-1E45-434A-A404-C27DD67F9F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04CE86BE-1E45-434A-A404-C27DD67F9F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04CE86BE-1E45-434A-A404-C27DD67F9F49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C822ED1-796E-49BD-AB0E-71327AEA2579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C822ED1-796E-49BD-AB0E-71327AEA2579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C822ED1-796E-49BD-AB0E-71327AEA2579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C822ED1-796E-49BD-AB0E-71327AEA2579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
