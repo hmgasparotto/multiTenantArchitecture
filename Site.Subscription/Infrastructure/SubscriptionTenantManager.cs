@@ -1,14 +1,10 @@
-﻿using Data.Tenants.Context;
+﻿using Common.Infrastructure.Cryptography;
+using Data.Tenants.Repositories;
 using Domain.Models.Tenants;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Site.Subscription.Infrastructure
 {
@@ -18,8 +14,10 @@ namespace Site.Subscription.Infrastructure
 
         public static SubscriptionTenantManager Create(IdentityFactoryOptions<SubscriptionTenantManager> options, IOwinContext context)
         {
-            var appcontext = context.Get<TenantDbContext>();
-            var userManager = new SubscriptionTenantManager(new UserStore<Tenant>(appcontext));
+            var userManager = new SubscriptionTenantManager(new UserStore<Tenant>(TenantRepository.Create()));
+
+            userManager.PasswordHasher = new SimplePasswordHasher();
+
             return userManager;
         }
     }

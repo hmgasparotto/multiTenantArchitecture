@@ -17,8 +17,18 @@ namespace Data.IoT.Repositories
 
         public ContainerLevelMeasurerRepository(string tenantSchema, DbConnection connection)
         {
-            IoTDataContext.ProvisionTenant(tenantSchema, connection, "ContainerLevel");
             dbContext = IoTDataContext.Create(tenantSchema, connection, "ContainerLevel");
+        }
+
+        public static ContainerLevelMeasurerRepository Create(string tenantSchema, DbConnection connection)
+        {
+            IoTDataContext.ProvisionTenant(tenantSchema, connection, "ContainerLevel");
+            return new ContainerLevelMeasurerRepository(tenantSchema, connection);
+        }
+
+        public static ContainerLevelMeasurerRepository Get(string tenantSchema, DbConnection connection)
+        {
+            return new ContainerLevelMeasurerRepository(tenantSchema, connection);
         }
 
         public void Add(ContainerLevelMeasurer obj)

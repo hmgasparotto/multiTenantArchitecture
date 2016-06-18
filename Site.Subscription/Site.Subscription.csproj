@@ -179,9 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\SubscriptionSignInManager.cs" />
     <Compile Include="Infrastructure\SubscriptionTenantManager.cs" />
-    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\TenantViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -193,7 +191,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\CreateUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -4,6 +4,6 @@ namespace Domain.Models.Tenants
 {
     public class Tenant : IdentityUser
     {
-
+        public string HostName { get; set; }
     }
 }

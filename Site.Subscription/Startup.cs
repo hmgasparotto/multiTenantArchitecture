@@ -18,15 +18,6 @@ namespace Site.Subscription
         {
             app.CreatePerOwinContext(TenantRepository.Create);
             app.CreatePerOwinContext<SubscriptionTenantManager>(SubscriptionTenantManager.Create);
-            app.CreatePerOwinContext<SubscriptionSignInManager>(SubscriptionSignInManager.Create);
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
-                CookieName = "TenantLogin",
-                CookiePath = "/",
-                ExpireTimeSpan = TimeSpan.FromHours(12)
-            });
         }
     }
 }

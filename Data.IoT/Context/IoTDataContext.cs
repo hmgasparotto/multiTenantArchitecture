@@ -22,7 +22,7 @@ namespace Data.IoT.Context
 
         public static IoTDataContext Create(string tenantSchema, DbConnection connection, string thingType)
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<IoTDataContext, DbMigrationsConfiguration<IoTDataContext>>());
+            Database.SetInitializer<IoTDataContext>(null);
             DbCompiledModel compiledModel = modelCache.GetOrAdd(
                 Tuple.Create(connection.ConnectionString, tenantSchema), t => {
                     DbModelBuilder builder = new DbModelBuilder();
