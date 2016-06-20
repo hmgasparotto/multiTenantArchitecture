@@ -192,6 +192,8 @@
     </Content>
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Account\CreateUser.cshtml" />
+    <None Include="Properties\PublishProfiles\tccsubscription %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\tccsubscription.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,10 +17,12 @@ namespace Data.IoT.Mapping
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(x => x.Latitude)
-                .IsRequired();
+                .IsRequired()
+                .HasPrecision(10, 6);
 
             Property(x => x.Longitude)
-                .IsRequired();
+                .IsRequired()
+                .HasPrecision(10, 6);
 
             Property(x => x.Level)
                 .HasPrecision(12, 1);

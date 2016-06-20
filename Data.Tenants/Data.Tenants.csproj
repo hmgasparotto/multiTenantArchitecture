@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201606181354422_AddedHostname.Designer.cs">
       <DependentUpon>201606181354422_AddedHostname.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606192143115_AddTenantType.cs" />
+    <Compile Include="Migrations\201606192143115_AddTenantType.Designer.cs">
+      <DependentUpon>201606192143115_AddTenantType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TenantRepository.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606181354422_AddedHostname.resx">
       <DependentUpon>201606181354422_AddedHostname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606192143115_AddTenantType.resx">
+      <DependentUpon>201606192143115_AddTenantType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

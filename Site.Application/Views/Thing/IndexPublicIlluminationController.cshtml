@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Domain.Models.Things.PublicIlluminationController>
+
+@{
+    ViewBag.Title = "Public Illumination Controller";
+}
+
+@section scripts
+{
+    <script>
+        var map;
+        function loadMapScenario() {
+            map = new Microsoft.Maps.Map(document.getElementById('mapViewer'), {
+                credentials: 'AhTFkkLNWCZeF1-u8TmOVGfumUUQZx6fvbEydcnpeOl2z6HkE09oXUayXjV6yW4V',
+                center: new Microsoft.Maps.Location(-29.691037,-53.835232),
+                zoom: 13
+            });
+            @foreach (var location in Model)
+            {
+                <text>
+                var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(@location.Latitude, @location.Longitude), { icon: @{ if (location.IsOn) { <text>'Content/Images/light.png'</text> } else { <text>'Content/Images/light-off.png'</text> } } });
+                map.entities.push(pushpin);
+                </text>
+            }
+        }
+    </script>
+    <script src="http://www.bing.com/api/maps/mapcontrol?branch=release&callback=loadMapScenario" async defer></script>
+}
+
+<h2>Public Illumination Controller</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreatePublicIlluminationController")
+</p>
+
+<div id='mapViewer' style='width: 100%; height: 300px;'></div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditPublicIlluminationController", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsPublicIlluminationController", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeletePublicIlluminationController", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

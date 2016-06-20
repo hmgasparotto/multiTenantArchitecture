@@ -1,0 +1,42 @@
+﻿@model Domain.Models.Things.PublicIlluminationController
+
+@{
+    ViewBag.Title = "Public Illumination Controller Details";
+}
+
+<h2>Public Illumination Controller Details</h2>
+
+<div>
+    <h4>Public Illumination Controller</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditPublicIlluminationController", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

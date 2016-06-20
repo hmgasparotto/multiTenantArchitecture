@@ -168,6 +168,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ThingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,12 +181,17 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\light-off.png" />
+    <Content Include="Content\Images\light.png" />
+    <Content Include="Content\Images\trash-low-level.png" />
+    <Content Include="Content\Images\trash.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\tccapplication.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -215,6 +221,16 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Thing\IndexContainerLevelMeasurer.cshtml" />
+    <Content Include="Views\Thing\IndexPublicIlluminationController.cshtml" />
+    <Content Include="Views\Thing\CreateContainerLevelMeasurer.cshtml" />
+    <Content Include="Views\Thing\EditContainerLevelMeasurer.cshtml" />
+    <Content Include="Views\Thing\DetailsContainerLevelMeasurer.cshtml" />
+    <Content Include="Views\Thing\DeleteContainerLevelMeasurer.cshtml" />
+    <Content Include="Views\Thing\CreatePublicIlluminationController.cshtml" />
+    <Content Include="Views\Thing\EditPublicIlluminationController.cshtml" />
+    <Content Include="Views\Thing\DetailsPublicIlluminationController.cshtml" />
+    <Content Include="Views\Thing\DeletePublicIlluminationController.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -232,9 +248,17 @@
       <Project>{04ce86be-1e45-434a-a404-c27dd67f9f49}</Project>
       <Name>Common.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data.IoT\Data.IoT.csproj">
+      <Project>{4c822ed1-796e-49bd-ab0e-71327aea2579}</Project>
+      <Name>Data.IoT</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data.Tenants\Data.Tenants.csproj">
       <Project>{d4890833-37d1-4806-9fa0-d10aa792da88}</Project>
       <Name>Data.Tenants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Interfaces\Domain.Interfaces.csproj">
+      <Project>{4fc1ed47-5f0e-4957-a70a-c20f7f29d037}</Project>
+      <Name>Domain.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain.Models\Domain.Models.csproj">
       <Project>{27f7a803-c922-4185-9021-3549c4823cd5}</Project>

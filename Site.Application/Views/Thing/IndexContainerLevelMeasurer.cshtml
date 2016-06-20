@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Domain.Models.Things.ContainerLevelMeasurer>
+
+@{
+    ViewBag.Title = "Container Level Measurer";
+}
+
+@section scripts
+{
+    <script>
+        var map;
+        function loadMapScenario() {
+            map = new Microsoft.Maps.Map(document.getElementById('mapViewer'), {
+                credentials: 'AhTFkkLNWCZeF1-u8TmOVGfumUUQZx6fvbEydcnpeOl2z6HkE09oXUayXjV6yW4V',
+                center: new Microsoft.Maps.Location(-29.691037,-53.835232),
+                zoom: 13
+            });
+            @foreach (var location in Model)
+            {
+                <text>
+                var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(@location.Latitude, @location.Longitude), { icon: @{ if (location.Level > 0.2m) { <text>'Content/Images/trash.png'</text> } else { <text>'Content/Images/trash-low-level.png'</text> } } });
+                map.entities.push(pushpin);
+                </text>
+            }
+        }
+    </script>
+    <script src="http://www.bing.com/api/maps/mapcontrol?branch=release&callback=loadMapScenario" async defer></script>
+}
+
+<h2>Container Level Measurer</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateContainerLevelMeasurer")
+</p>
+
+<div id='mapViewer' style='width: 100%; height: 300px;'></div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditContainerLevelMeasurer", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsContainerLevelMeasurer", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteContainerLevelMeasurer", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

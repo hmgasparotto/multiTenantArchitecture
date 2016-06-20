@@ -56,7 +56,7 @@ namespace Site.Subscription.Controllers
             if (ModelState.IsValid)
             {
                 var hasher = new SimplePasswordHasher();
-                var tenant = new Tenant() { UserName = model.Username, Email = model.Email };
+                var tenant = new Tenant() { UserName = model.Username, Email = model.Email, Type = model.Type.ToString() };
                 var result = await TenantManager.CreateAsync(tenant, model.Password);
                 if (result.Succeeded)
                 {
