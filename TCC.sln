@@ -21,6 +21,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Services", "Domain.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services", "Application.Services\Application.Services.csproj", "{EB530C8C-5BBA-442F-B6B3-96BA01CBA130}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.WebApi", "Site.WebApi\Site.WebApi.csproj", "{C809970D-5B05-4727-BE2D-B795542A0C2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{251FF545-66F2-4A5E-AC70-275F964C9B14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DA770601-21D7-4E37-988D-986425FB456A}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{96487C51-C759-4E0C-8D5E-2203D1141FF4}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\SiteWebApi.json = PublishScripts\Templates\SiteWebApi.json
+		PublishScripts\Templates\SiteWebApi.param.dev.json = PublishScripts\Templates\SiteWebApi.param.dev.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,8 +78,16 @@ Global
 		{EB530C8C-5BBA-442F-B6B3-96BA01CBA130}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB530C8C-5BBA-442F-B6B3-96BA01CBA130}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB530C8C-5BBA-442F-B6B3-96BA01CBA130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C809970D-5B05-4727-BE2D-B795542A0C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C809970D-5B05-4727-BE2D-B795542A0C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C809970D-5B05-4727-BE2D-B795542A0C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C809970D-5B05-4727-BE2D-B795542A0C2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA770601-21D7-4E37-988D-986425FB456A} = {251FF545-66F2-4A5E-AC70-275F964C9B14}
+		{96487C51-C759-4E0C-8D5E-2203D1141FF4} = {251FF545-66F2-4A5E-AC70-275F964C9B14}
 	EndGlobalSection
 EndGlobal

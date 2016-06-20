@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "tccwebapi"
+  },
+  "hostingPlanName": {
+    "value": "tcc_plan"
+  },
+  "siteLocation": {
+    "value": "Canada Central"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "febc399b-7aed-48d0-85cd-d15a86ac5b40"
+  },
+  "resourceGroup": {
+    "value": "hmgasparotto_resources"
+  }
+}
