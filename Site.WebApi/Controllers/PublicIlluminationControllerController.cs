@@ -18,6 +18,7 @@ using System.Web.Http.Description;
 
 namespace Site.WebApi.Controllers
 {
+    [Authorize]
     public class PublicIlluminationControllerController : ApiController
     {
         private IPublicIlluminationControllerAppService _picService;
