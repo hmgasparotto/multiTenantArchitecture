@@ -1,4 +1,6 @@
-﻿using Data.IoT.Repositories;
+﻿using Application.Services;
+using Application.Services.Interfaces;
+using Data.IoT.Repositories;
 using Domain.Interfaces.Repositories;
 using Domain.Models.Tenants;
 using Domain.Models.Things;
@@ -16,8 +18,10 @@ namespace Site.Application.Controllers
     [Authorize]
     public class ThingController : Controller
     {
-        private IThingRepository<ContainerLevelMeasurer> _clmRepository;
-        private IThingRepository<PublicIlluminationController> _picRepository;
+        //private IThingRepository<ContainerLevelMeasurer> _clmRepository;
+        //private IThingRepository<PublicIlluminationController> _picRepository;
+        private IContainerLevelMeasurerAppService _clmService;
+        private IPublicIlluminationControllerAppService _picService;
 
         private ApplicationTenantManager _tenantManager;
         private Tenant _currentTenant;
@@ -40,11 +44,11 @@ namespace Site.Application.Controllers
             RepositoryGetter();
             if (_currentTenant.Type.Contains("ContainerLevel"))
             {
-                return View("IndexContainerLevelMeasurer", _clmRepository.GetAll());
+                return View("IndexContainerLevelMeasurer", _clmService.GetAll());
             }
             else if (_currentTenant.Type.Contains("PublicIllumination"))
             {
-                return View("IndexPublicIlluminationController", _picRepository.GetAll());
+                return View("IndexPublicIlluminationController", _picService.GetAll());
             }
             return View();
         }
@@ -62,7 +66,7 @@ namespace Site.Application.Controllers
             RepositoryGetter();
             if (ModelState.IsValid)
             {
-                _clmRepository.Add(model);
+                _clmService.Add(model);
                 return RedirectToAction("Index");
             }
             else
@@ -74,7 +78,7 @@ namespace Site.Application.Controllers
         public ActionResult EditContainerLevelMeasurer(int id)
         {
             RepositoryGetter();
-            return View(_clmRepository.Find(id));
+            return View(_clmService.Find(id));
         }
 
         [HttpPost]
@@ -83,7 +87,7 @@ namespace Site.Application.Controllers
             RepositoryGetter();
             if (ModelState.IsValid)
             {
-                _clmRepository.Add(model);
+                _clmService.Add(model);
                 return RedirectToAction("Index");
             }
             else
@@ -95,13 +99,13 @@ namespace Site.Application.Controllers
         public ActionResult DetailsContainerLevelMeasurer(int id)
         {
             RepositoryGetter();
-            return View(_clmRepository.Find(id));
+            return View(_clmService.Find(id));
         }
 
         public ActionResult DeleteContainerLevelMeasurer(int id)
         {
             RepositoryGetter();
-            return View(_clmRepository.Find(id));
+            return View(_clmService.Find(id));
         }
 
         [HttpPost]
@@ -110,7 +114,7 @@ namespace Site.Application.Controllers
             RepositoryGetter();
             if (ModelState.IsValid)
             {
-                _clmRepository.Remove(model);
+                _clmService.Remove(model);
                 return RedirectToAction("Index");
             }
             else
@@ -133,7 +137,7 @@ namespace Site.Application.Controllers
             RepositoryGetter();
             if (ModelState.IsValid)
             {
-                _picRepository.Add(model);
+                _picService.Add(model);
                 return RedirectToAction("Index");
             }
             else
@@ -145,7 +149,7 @@ namespace Site.Application.Controllers
         public ActionResult EditPublicIlluminationController(int id)
         {
             RepositoryGetter();
-            return View(_picRepository.Find(id));
+            return View(_picService.Find(id));
         }
 
         [HttpPost]
@@ -154,7 +158,7 @@ namespace Site.Application.Controllers
             RepositoryGetter();
             if (ModelState.IsValid)
             {
-                _picRepository.Add(model);
+                _picService.Add(model);
                 return RedirectToAction("Index");
             }
             else
@@ -166,13 +170,13 @@ namespace Site.Application.Controllers
         public ActionResult DetailsPublicIlluminationController(int id)
         {
             RepositoryGetter();
-            return View(_picRepository.Find(id));
+            return View(_picService.Find(id));
         }
 
         public ActionResult DeletePublicIlluminationController(int id)
         {
             RepositoryGetter();
-            return View(_picRepository.Find(id));
+            return View(_picService.Find(id));
         }
 
         [HttpPost]
@@ -181,7 +185,7 @@ namespace Site.Application.Controllers
             RepositoryGetter();
             if (ModelState.IsValid)
             {
-                _picRepository.Remove(model);
+                _picService.Remove(model);
                 return RedirectToAction("Index");
             }
             else
@@ -194,17 +198,17 @@ namespace Site.Application.Controllers
         #region Helpers
         public void RepositoryGetter()
         {
-            if ((HttpContext != null) && (_clmRepository == null) & (_picRepository == null))
+            if ((HttpContext != null) && (_clmService == null) & (_picService == null))
             {
                 var tenant = Task.Run(() => TenantManager.FindByIdAsync(HttpContext.User.Identity.GetUserId()));
                 _currentTenant = tenant.Result;
                 if (_currentTenant.Type.Contains("ContainerLevel"))
                 {
-                    _clmRepository = ContainerLevelMeasurerRepository.Get(_currentTenant.Id, new SqlConnection(ConfigurationManager.ConnectionStrings["IoTDatabase"].ConnectionString));
+                    _clmService = ContainerLevelMeasurerAppService.Factory(_currentTenant.Id, new SqlConnection(ConfigurationManager.ConnectionStrings["IoTDatabase"].ConnectionString), false);
                 }
                 else if (_currentTenant.Type.Contains("PublicIllumination"))
                 {
-                    _picRepository = PublicIlluminationControllerRepository.Get(_currentTenant.Id, new SqlConnection(ConfigurationManager.ConnectionStrings["IoTDatabase"].ConnectionString));
+                    _picService = PublicIlluminationControllerAppService.Factory(_currentTenant.Id, new SqlConnection(ConfigurationManager.ConnectionStrings["IoTDatabase"].ConnectionString), false);
                 }
             }
         }
