@@ -72,8 +72,7 @@ namespace Site.Subscription.Controllers
                             break;
                     }
 
-                    // Redirecionar para o Login do site
-                    return RedirectToAction("Index", "Home");
+                    return Redirect("http://tccapplication.azurewebsites.net/");
                 }
                 AddErrors(result);
             }
