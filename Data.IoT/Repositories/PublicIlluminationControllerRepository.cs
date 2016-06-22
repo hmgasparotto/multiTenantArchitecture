@@ -4,10 +4,6 @@ using Domain.Interfaces.Repositories;
 using Domain.Models.Things;
 using Data.IoT.Context;
 using System.Data.Common;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Collections.Concurrent;
-using Data.IoT.Mapping;
 
 namespace Data.IoT.Repositories
 {

@@ -14,11 +14,32 @@
                 center: new Microsoft.Maps.Location(-29.691037,-53.835232),
                 zoom: 13
             });
+            Microsoft.Maps.Events.addHandler(map, 'click', function (e) {
+                var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+                var loc = e.target.tryPixelToLocation(point);
+                var location = new Microsoft.Maps.Location(loc.latitude, loc.longitude);
+                var PublicIlluminationController =
+                {
+                    "Latitude": location.latitude,
+                    "Longitude": location.longitude,
+                    "IsOn": true
+                };
+                $.ajax({
+                    url: '/Thing/CreatePublicIlluminationController/',
+                    data: JSON.stringify(PublicIlluminationController),
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8'
+                });
+                window.location.href = "@Url.Action("Index")";
+            });
             @foreach (var location in Model)
             {
                 <text>
                 var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(@location.Latitude, @location.Longitude), { icon: @{ if (location.IsOn) { <text>'Content/Images/light.png'</text> } else { <text>'Content/Images/light-off.png'</text> } } });
                 map.entities.push(pushpin);
+                Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
+                    window.location.href = "@Url.Action("DetailsPublicIlluminationController", new { Id = location.Id })";
+                });
                 </text>
             }
         }

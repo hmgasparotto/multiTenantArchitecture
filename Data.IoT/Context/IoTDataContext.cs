@@ -5,7 +5,6 @@ using System.Collections.Concurrent;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Migrations;
 
 namespace Data.IoT.Context
 {

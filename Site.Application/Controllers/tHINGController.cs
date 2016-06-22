@@ -1,7 +1,5 @@
 ﻿using Application.Services;
 using Application.Services.Interfaces;
-using Data.IoT.Repositories;
-using Domain.Interfaces.Repositories;
 using Domain.Models.Tenants;
 using Domain.Models.Things;
 using Microsoft.AspNet.Identity;
@@ -18,8 +16,6 @@ namespace Site.Application.Controllers
     [Authorize]
     public class ThingController : Controller
     {
-        //private IThingRepository<ContainerLevelMeasurer> _clmRepository;
-        //private IThingRepository<PublicIlluminationController> _picRepository;
         private IContainerLevelMeasurerAppService _clmService;
         private IPublicIlluminationControllerAppService _picService;
 
