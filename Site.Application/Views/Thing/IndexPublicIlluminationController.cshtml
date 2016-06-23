@@ -49,7 +49,7 @@
             @foreach (var location in Model)
             {
                 <text>
-                var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(@location.Latitude, @location.Longitude), { icon: @{ if (location.IsOn) { <text>'Content/Images/light.png'</text> } else { <text>'Content/Images/light-off.png'</text> } } });
+                var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(@location.Latitude, @location.Longitude), { icon: @{ if (location.IsOn) { <text>'/Content/Images/light.png'</text> } else { <text>'/Content/Images/light-off.png'</text> } } });
                 map.entities.push(pushpin);
                 Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
                     window.location.href = "@Url.Action("DetailsPublicIlluminationController", new { Id = location.Id })";
@@ -63,7 +63,7 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-<div id="dialog-confirm" title="Create new Public Illumination Controller?">
+<div style="display: none;" id="dialog-confirm" title="Create new Public Illumination Controller?">
     <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure?</p>
 </div>
 
@@ -92,10 +92,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Latitude)
+            @item.Latitude.ToString("0.000000")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Longitude)
+            @item.Longitude.ToString("0.000000")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsOn)
