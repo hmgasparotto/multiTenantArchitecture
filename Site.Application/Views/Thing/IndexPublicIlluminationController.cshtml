@@ -6,6 +6,7 @@
 
 @section scripts
 {
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script>
         var map;
         function loadMapScenario() {
@@ -15,22 +16,35 @@
                 zoom: 13
             });
             Microsoft.Maps.Events.addHandler(map, 'click', function (e) {
-                var point = new Microsoft.Maps.Point(e.getX(), e.getY());
-                var loc = e.target.tryPixelToLocation(point);
-                var location = new Microsoft.Maps.Location(loc.latitude, loc.longitude);
-                var PublicIlluminationController =
-                {
-                    "Latitude": location.latitude,
-                    "Longitude": location.longitude,
-                    "IsOn": true
-                };
-                $.ajax({
-                    url: '/Thing/CreatePublicIlluminationController/',
-                    data: JSON.stringify(PublicIlluminationController),
-                    type: 'POST',
-                    contentType: 'application/json; charset=utf-8'
+                $("#dialog-confirm").dialog({
+                    resizable: false,
+                    height:140,
+                    modal: true,
+                    buttons: {
+                        "Create new": function() {
+                            var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+                            var loc = e.target.tryPixelToLocation(point);
+                            var location = new Microsoft.Maps.Location(loc.latitude, loc.longitude);
+                            var PublicIlluminationController =
+                            {
+                                "Latitude": location.latitude,
+                                "Longitude": location.longitude,
+                                "IsOn": true
+                            };
+                            $.ajax({
+                                url: '/Thing/CreatePublicIlluminationController/',
+                                data: JSON.stringify(PublicIlluminationController),
+                                type: 'POST',
+                                contentType: 'application/json; charset=utf-8'
+                            });
+                            window.location.href = "@Url.Action("Index")";
+                            $(this).dialog( "close" );
+                        },
+                        Cancel: function() {
+                            $(this).dialog( "close" );
+                        }
+                    }
                 });
-                window.location.href = "@Url.Action("Index")";
             });
             @foreach (var location in Model)
             {
@@ -46,6 +60,12 @@
     </script>
     <script src="http://www.bing.com/api/maps/mapcontrol?branch=release&callback=loadMapScenario" async defer></script>
 }
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<div id="dialog-confirm" title="Create new Public Illumination Controller?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure?</p>
+</div>
 
 <h2>Public Illumination Controller</h2>
 
